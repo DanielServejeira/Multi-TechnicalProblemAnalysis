@@ -18,19 +18,19 @@ This project aims to develop programs to solve some usual problems, using the sp
 This project focuses on implementing solutions for a set of algorithmic problems, applied to real-world challenges. Below are the problems addressed:
 
 1. **Assignment Problem**  
-   - Solve using trial and error with **Branch and Bound**.
+   - Solved using trial and error with **Branch and Bound**.
 
 2. **Huffman Coding**  
-   - Compress a text provided by the user using a **Greedy Algorithm**.
+   - Compressed a text provided by the user using a **Greedy Algorithm**.
 
 3. **Fractional Knapsack Problem**  
-   - Solve using a **Greedy Algorithm** (research the problem).
+   - Solved using a **Greedy Algorithm**.
 
 4. **Boolean Knapsack Problem (0-1 Knapsack Problem)**  
-   - Solve using **Dynamic Programming**.
+   - Solved using **Dynamic Programming**.
 
 5. **Longest Common Subsequence Problem**  
-   - Solve using **Dynamic Programming**.
+   - Solved using **Dynamic Programming**.
 
    ---
 
