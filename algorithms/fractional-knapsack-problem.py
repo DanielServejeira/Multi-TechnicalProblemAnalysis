@@ -136,13 +136,13 @@ class FractionalKnapsackApp(tk.Tk):
         recursive_elapsed_time = end - start
 
         self.greedy_result_label.config(
-            text=f"Valor máximo na mochila: {greedy_result}"
+            text=f"Valor máximo na mochila (guloso): {greedy_result}"
         )
         self.greedy_elapsed_time_label.config(
             text=f"Tempo decorrido (guloso): {greedy_elapsed_time:.8f} segundos"
         )
         self.recursive_result_label.config(
-            text=f"Valor máximo na mochila: {recursive_result}"
+            text=f"Valor máximo na mochila (recursivo): {recursive_result}"
         )
         self.recursive_elapsed_time_label.config(
             text=f"Tempo decorrido (recursivo): {recursive_elapsed_time:.8f} segundos"
