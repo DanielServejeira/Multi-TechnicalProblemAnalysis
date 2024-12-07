@@ -38,7 +38,6 @@ def dynamic_lcs(S1, S2, m, n):
     return "".join(lcs_algo)
 
 
-
 def recursive_lcs(s1, s2, m, n):
     # Base case: If either string is empty, the LCS is an empty string
     if m == 0 or n == 0:
@@ -55,7 +54,6 @@ def recursive_lcs(s1, s2, m, n):
         lcs1 = recursive_lcs(s1, s2, m - 1, n)
         lcs2 = recursive_lcs(s1, s2, m, n - 1)
         return lcs1 if len(lcs1) > len(lcs2) else lcs2
-
 
 
 class LongestCommonSubsequenceApp(tk.Tk):
