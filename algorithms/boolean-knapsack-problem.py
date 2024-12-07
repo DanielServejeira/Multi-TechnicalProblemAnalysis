@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 import random
 
-def boolean_fractional_knapsack(weights, profit, max_weight, n, t): 
+def greedy_boolean_knapsack(weights, profit, max_weight, n, t): 
     # base conditions 
     if n == 0 or max_weight == 0: 
         return 0
@@ -13,12 +13,12 @@ def boolean_fractional_knapsack(weights, profit, max_weight, n, t):
     # choice diagram code 
     if weights[n-1] <= max_weight: 
         t[n][max_weight] = max( 
-            profit[n-1] + boolean_fractional_knapsack( 
+            profit[n-1] + greedy_boolean_knapsack( 
                 weights, profit, max_weight-weights[n-1], n-1, t), 
-            boolean_fractional_knapsack(weights, profit, max_weight, n-1, t)) 
+            greedy_boolean_knapsack(weights, profit, max_weight, n-1, t)) 
         return t[n][max_weight] 
     elif weights[n-1] > max_weight: 
-        t[n][max_weight] = boolean_fractional_knapsack(weights, profit, max_weight, n-1, t) 
+        t[n][max_weight] = greedy_boolean_knapsack(weights, profit, max_weight, n-1, t) 
         return t[n][max_weight] 
 
 def recursive_boolean_knapsack(max_weight, weights, profit, n): 
@@ -42,7 +42,7 @@ def recursive_boolean_knapsack(max_weight, weights, profit, n):
                 max_weight-weights[n-1], weights, profit, n-1), 
             recursive_boolean_knapsack(max_weight, weights, profit, n-1)) 
 
-class KnapsackApp(tk.Tk):
+class BooleanKnapsackApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Problema da Mochila Booleana")
@@ -107,7 +107,7 @@ class KnapsackApp(tk.Tk):
 
         start = time()
         t = [[-1 for i in range(max_weight + 1)] for j in range(len(profit) + 1)]
-        greedy_result = boolean_fractional_knapsack(weights, profit, max_weight, len(profit), t)
+        greedy_result = greedy_boolean_knapsack(weights, profit, max_weight, len(profit), t)
         end = time()
         greedy_elapsed_time = end - start
 
@@ -121,8 +121,8 @@ class KnapsackApp(tk.Tk):
         self.recursive_result_label.config(text=f"Valor máximo na mochila: {recursive_result}")
         self.recursive_elapsed_time_label.config(text=f"Tempo decorrido (recursivo): {recursive_elapsed_time:.8f} segundos")
 
-def run_knapsack_interface():
-    app = KnapsackApp()
+def run_boolean_knapsack_interface():
+    app = BooleanKnapsackApp()
     app.mainloop()
 
-run_knapsack_interface()
+run_boolean_knapsack_interface()
