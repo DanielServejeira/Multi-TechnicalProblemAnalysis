@@ -45,7 +45,7 @@ def recursive_fractional_knapsack(values, weights, W, n):
         )
 
 
-class KnapsackApp(tk.Tk):
+class FractionalKnapsackApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Problema da Mochila Fracionária")
@@ -149,9 +149,9 @@ class KnapsackApp(tk.Tk):
         )
 
 
-def run_knapsack_interface():
-    app = KnapsackApp()
+def run_fractional_knapsack_interface():
+    app = FractionalKnapsackApp()
     app.mainloop()
 
 
-run_knapsack_interface()
+run_fractional_knapsack_interface()
