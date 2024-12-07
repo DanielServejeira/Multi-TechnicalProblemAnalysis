@@ -108,17 +108,11 @@ class KnapsackApp(tk.Tk):
         greedy_result = greedy_fractional_knapsack(values, weights, max_weight)
         end = time()
         greedy_elapsed_time = end - start
-        print(f"greedy_start: {start}")
-        print(f"greedy_end: {end}")
-        print(f"greedy_elapsed_time: {greedy_elapsed_time}")
         
         start = time()
         recursive_result = recursive_fractional_knapsack(values, weights, max_weight, len(values))
         end = time()
         recursive_elapsed_time = end - start
-        print(f"recursive_start: {start}")
-        print(f"recursive_end: {end}")
-        print(f"recursive_elapsed_time: {recursive_elapsed_time}")
         
         self.greedy_result_label.config(text=f"Valor máximo na mochila: {greedy_result}")
         self.greedy_elapsed_time_label.config(text=f"Tempo decorrido (guloso): {greedy_elapsed_time:.8f} segundos")
