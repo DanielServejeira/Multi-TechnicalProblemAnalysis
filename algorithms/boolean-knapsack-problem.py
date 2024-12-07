@@ -4,7 +4,7 @@ from tkinter import ttk
 import random
 
 
-def greedy_boolean_knapsack(weights, profit, max_weight, n, t):
+def dynamic_boolean_knapsack(weights, profit, max_weight, n, t):
     # base conditions
     if n == 0 or max_weight == 0:
         return 0
@@ -15,14 +15,14 @@ def greedy_boolean_knapsack(weights, profit, max_weight, n, t):
     if weights[n - 1] <= max_weight:
         t[n][max_weight] = max(
             profit[n - 1]
-            + greedy_boolean_knapsack(
+            + dynamic_boolean_knapsack(
                 weights, profit, max_weight - weights[n - 1], n - 1, t
             ),
-            greedy_boolean_knapsack(weights, profit, max_weight, n - 1, t),
+            dynamic_boolean_knapsack(weights, profit, max_weight, n - 1, t),
         )
         return t[n][max_weight]
     elif weights[n - 1] > max_weight:
-        t[n][max_weight] = greedy_boolean_knapsack(
+        t[n][max_weight] = dynamic_boolean_knapsack(
             weights, profit, max_weight, n - 1, t
         )
         return t[n][max_weight]
@@ -61,7 +61,7 @@ class BooleanKnapsackApp(tk.Tk):
 
         title = ttk.Label(
             self,
-            text="Problema da Mochila Booleana\n(comparativo com algoritmo guloso x recursivo)",
+            text="Problema da Mochila Booleana\n(comparativo com programação dinâmica x recursivo)",
             font=("Arial", 16),
             justify="center",
         )
@@ -98,11 +98,11 @@ class BooleanKnapsackApp(tk.Tk):
         )
         self.mock_calculate_button.pack(pady=10)
 
-        self.greedy_result_label = ttk.Label(self, text="", font=("Arial", 12))
-        self.greedy_result_label.pack(pady=10)
+        self.dynamic_result_label = ttk.Label(self, text="", font=("Arial", 12))
+        self.dynamic_result_label.pack(pady=10)
 
-        self.greedy_elapsed_time_label = ttk.Label(self, text="", font=("Arial", 12))
-        self.greedy_elapsed_time_label.pack(pady=10)
+        self.dynamic_elapsed_time_label = ttk.Label(self, text="", font=("Arial", 12))
+        self.dynamic_elapsed_time_label.pack(pady=10)
 
         self.recursive_result_label = ttk.Label(self, text="", font=("Arial", 12))
         self.recursive_result_label.pack(pady=10)
@@ -133,11 +133,11 @@ class BooleanKnapsackApp(tk.Tk):
 
         start = time()
         t = [[-1 for i in range(max_weight + 1)] for j in range(len(profit) + 1)]
-        greedy_result = greedy_boolean_knapsack(
+        dynamic_result = dynamic_boolean_knapsack(
             weights, profit, max_weight, len(profit), t
         )
         end = time()
-        greedy_elapsed_time = end - start
+        dynamic_elapsed_time = end - start
 
         start = time()
         recursive_result = recursive_boolean_knapsack(
@@ -146,14 +146,14 @@ class BooleanKnapsackApp(tk.Tk):
         end = time()
         recursive_elapsed_time = end - start
 
-        self.greedy_result_label.config(
-            text=f"Valor máximo na mochila: {greedy_result}"
+        self.dynamic_result_label.config(
+            text=f"Valor máximo na mochila (dinâmico): {dynamic_result}"
         )
-        self.greedy_elapsed_time_label.config(
-            text=f"Tempo decorrido (guloso): {greedy_elapsed_time:.8f} segundos"
+        self.dynamic_elapsed_time_label.config(
+            text=f"Tempo decorrido (dinâmico): {dynamic_elapsed_time:.8f} segundos"
         )
         self.recursive_result_label.config(
-            text=f"Valor máximo na mochila: {recursive_result}"
+            text=f"Valor máximo na mochila (recursivo): {recursive_result}"
         )
         self.recursive_elapsed_time_label.config(
             text=f"Tempo decorrido (recursivo): {recursive_elapsed_time:.8f} segundos"
