@@ -2,7 +2,7 @@ from time import time
 import tkinter as tk
 from tkinter import ttk
 import random
-from translations.boolean_knapsack_problem_translation import translate
+from algorithms.translations.boolean_knapsack_problem_translation import translate
 
 
 def dynamic_boolean_knapsack(weights, profit, max_weight, n, t):
@@ -119,7 +119,7 @@ class BooleanKnapsackApp(tk.Tk):
         self.recursive_elapsed_time_label.pack(pady=10)
 
         self.exit_button = ttk.Button(
-            self, text=translate(language, "exit_button"), command=self.quit
+            self, text=translate(language, "exit_button"), command=self.destroy
         )
         self.exit_button.pack(pady=10)
 
@@ -173,14 +173,3 @@ class BooleanKnapsackApp(tk.Tk):
 def run_boolean_knapsack_interface(language):
     app = BooleanKnapsackApp(language)
     app.mainloop()
-
-
-print(
-    """
-    [0] - PT-BR
-    [1] - EN-US
-      """
-)
-opt = str(input("Selecione seu idioma de preferência: "))
-lang = {"0": "pt-br", "1": "en-us"}
-run_boolean_knapsack_interface(lang[opt])
