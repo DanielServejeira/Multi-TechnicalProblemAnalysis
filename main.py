@@ -42,9 +42,6 @@ def program_functionality(language: int) -> int:
 
     return program_functionality
 
-portuguese_interfaces_path = "algorithms.portuguese_interfaces"
-english_interfaces_path = "algorithms.english_interfaces"
-
 program_functionality = 0
 language = 0
 supported_languages = 2
