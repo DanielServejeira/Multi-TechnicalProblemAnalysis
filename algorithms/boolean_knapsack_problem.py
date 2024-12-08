@@ -56,6 +56,7 @@ def recursive_boolean_knapsack(max_weight, weights, profit, n):
 
 class BooleanKnapsackApp(tk.Tk):
     language: str
+
     def __init__(self, language):
         super().__init__()
         self.language = language
@@ -70,7 +71,9 @@ class BooleanKnapsackApp(tk.Tk):
         )
         title.pack(pady=20)
 
-        self.max_weight_label = ttk.Label(self, text=translate(language, "max_weight_label"))
+        self.max_weight_label = ttk.Label(
+            self, text=translate(language, "max_weight_label")
+        )
         self.max_weight_label.pack()
         self.max_weight_entry = ttk.Entry(self)
         self.max_weight_entry.pack()
@@ -90,7 +93,9 @@ class BooleanKnapsackApp(tk.Tk):
         self.weights_entry.pack()
 
         self.calculate_button = ttk.Button(
-            self, text=translate(language, "calculate_button"), command=self.calculate_knapsack
+            self,
+            text=translate(language, "calculate_button"),
+            command=self.calculate_knapsack,
         )
         self.calculate_button.pack(pady=10)
 
@@ -113,7 +118,9 @@ class BooleanKnapsackApp(tk.Tk):
         self.recursive_elapsed_time_label = ttk.Label(self, text="", font=("Arial", 12))
         self.recursive_elapsed_time_label.pack(pady=10)
 
-        self.exit_button = ttk.Button(self, text=translate(language, "exit_button"), command=self.quit)
+        self.exit_button = ttk.Button(
+            self, text=translate(language, "exit_button"), command=self.quit
+        )
         self.exit_button.pack(pady=10)
 
     def mock_calculate_knapsack(self):
@@ -167,13 +174,13 @@ def run_boolean_knapsack_interface(language):
     app = BooleanKnapsackApp(language)
     app.mainloop()
 
-print("""
+
+print(
+    """
     [0] - PT-BR
     [1] - EN-US
-      """)
+      """
+)
 opt = str(input("Selecione seu idioma de preferência: "))
-lang = {
-    "0":'pt-br',
-    "1":'en-us'
-}
+lang = {"0": "pt-br", "1": "en-us"}
 run_boolean_knapsack_interface(lang[opt])
