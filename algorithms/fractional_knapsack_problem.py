@@ -162,14 +162,3 @@ class FractionalKnapsackApp(tk.Tk):
 def run_fractional_knapsack_interface(language: str):
     app = FractionalKnapsackApp(language)
     app.mainloop()
-
-
-print(
-    """
-    [0] - PT-BR
-    [1] - EN-US
-      """
-)
-opt = str(input("Selecione seu idioma de preferência: "))
-lang = {"0": "pt-br", "1": "en-us"}
-run_fractional_knapsack_interface(lang[opt])
