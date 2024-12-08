@@ -85,7 +85,9 @@ class LongestCommonSubsequenceApp(tk.Tk):
         self.string2_entry.pack()
 
         self.calculate_button = ttk.Button(
-            self, text=translate(language, "calculate_button"), command=self.calculate_lcs
+            self,
+            text=translate(language, "calculate_button"),
+            command=self.calculate_lcs,
         )
         self.calculate_button.pack(pady=10)
 
@@ -108,7 +110,9 @@ class LongestCommonSubsequenceApp(tk.Tk):
         self.recursive_elapsed_time_label = ttk.Label(self, text="", font=("Arial", 12))
         self.recursive_elapsed_time_label.pack(pady=10)
 
-        self.exit_button = ttk.Button(self, text=translate(language, "exit_button"), command=self.quit)
+        self.exit_button = ttk.Button(
+            self, text=translate(language, "exit_button"), command=self.quit
+        )
         self.exit_button.pack(pady=10)
 
     def mock_calculate_lcs(self):
@@ -151,9 +155,11 @@ class LongestCommonSubsequenceApp(tk.Tk):
             text=f"{translate(self.language, 'recursive_elapsed_time_label')}: {recursive_elapsed_time:.8f} {translate(self.language, 'seconds')}"
         )
 
+
 def run_lcs_interface(language: str):
     app = LongestCommonSubsequenceApp(language)
     app.mainloop()
+
 
 print(
     """
