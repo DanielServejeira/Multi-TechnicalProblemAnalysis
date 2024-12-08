@@ -24,7 +24,7 @@ def problem(language: str) -> int:
         try:
             problem = int(input(f"{translate(language, 'program_functionality')} "))
         except ValueError:  
-            print(f"{translate(language, "value_error")}\n")
+            print(f"{translate(language, 'value_error')}\n")
             clear_screen()
 
     return problem
