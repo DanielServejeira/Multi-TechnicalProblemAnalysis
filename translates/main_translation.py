@@ -8,6 +8,7 @@ enUs = {
     "longest_common_subsequence": "Longest Common Subsequence",
     "program_functionality": "Enter your choice:",
     "value_error": "Please enter a valid number.",
+    "exit": "Exit"
 }
 
 ptBr = {
@@ -20,6 +21,7 @@ ptBr = {
     "longest_common_subsequence": "Problema da Subsequência Comum Máxima",
     "program_functionality": "Digite sua escolha:",
     "value_error": "Por favor digite um número válido.",
+    "exit": "Sair"
 }
 
 main_translation = {
