@@ -37,8 +37,8 @@ ptBr = {
 }
 
 assignment_problem_translation = {
-    "pt-br": ptBr,
-    "en-us": enUs
+    "en-us": enUs,
+    "pt-br": ptBr
 }
 
 def translate(language: str, term: str):
