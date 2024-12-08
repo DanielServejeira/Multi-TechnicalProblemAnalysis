@@ -2,6 +2,7 @@ from time import time
 import tkinter as tk
 from tkinter import ttk
 import random
+from translations.lcs_translation import translate
 
 
 def dynamic_lcs(S1, S2, m, n):
@@ -57,37 +58,42 @@ def recursive_lcs(s1, s2, m, n):
 
 
 class LongestCommonSubsequenceApp(tk.Tk):
-    def __init__(self):
+    language: str
+
+    def __init__(self, language):
         super().__init__()
-        self.title("Problema da Subsequência Comum Mais Longa")
+        self.language = language
+        self.title(translate(language, "window_title"))
         self.geometry("600x550")
 
         title = ttk.Label(
             self,
-            text="Problema da Subsequência Comum Mais Longa\n(comparativo com programação dinâmica x recursivo)",
+            text=translate(language, "title"),
             font=("Arial", 16),
             justify="center",
         )
         title.pack(pady=20)
 
-        self.string1_label = ttk.Label(self, text="String 1:")
+        self.string1_label = ttk.Label(self, text=translate(language, "string1_label"))
         self.string1_label.pack()
         self.string1_entry = ttk.Entry(self)
         self.string1_entry.pack()
 
-        self.string2_label = ttk.Label(self, text="String 2:")
+        self.string2_label = ttk.Label(self, text=translate(language, "string2_label"))
         self.string2_label.pack()
         self.string2_entry = ttk.Entry(self)
         self.string2_entry.pack()
 
         self.calculate_button = ttk.Button(
-            self, text="Calcular", command=self.calculate_lcs
+            self,
+            text=translate(language, "calculate_button"),
+            command=self.calculate_lcs,
         )
         self.calculate_button.pack(pady=10)
 
         self.mock_calculate_button = ttk.Button(
             self,
-            text="Calcular (strings aleatórias)",
+            text=translate(language, "mock_calculate_button"),
             command=self.mock_calculate_lcs,
         )
         self.mock_calculate_button.pack(pady=10)
@@ -104,14 +110,15 @@ class LongestCommonSubsequenceApp(tk.Tk):
         self.recursive_elapsed_time_label = ttk.Label(self, text="", font=("Arial", 12))
         self.recursive_elapsed_time_label.pack(pady=10)
 
-        self.exit_button = ttk.Button(self, text="Sair", command=self.quit)
+        self.exit_button = ttk.Button(
+            self, text=translate(language, "exit_button"), command=self.quit
+        )
         self.exit_button.pack(pady=10)
 
     def mock_calculate_lcs(self):
         self.string1_entry.delete(0, tk.END)
         self.string2_entry.delete(0, tk.END)
 
-        # Strings pré-definidas com 20 caracteres
         s1 = "".join(random.choices("abcdefghijklmnopqrstuvwxyz", k=15))
         s2 = "".join(random.choices("abcdefghijklmnopqrstuvwxyz", k=15))
         self.string1_entry.insert(0, s1)
@@ -136,22 +143,30 @@ class LongestCommonSubsequenceApp(tk.Tk):
         recursive_elapsed_time = end - start
 
         self.dynamic_result_label.config(
-            text=f"Subsequência comum mais longa (dinâmico): {dynamic_result} ({len(dynamic_result)} caracteres)"
+            text=f"{translate(self.language, 'dynamic_result_label')}: {dynamic_result} ({len(dynamic_result)} caracteres)"
         )
         self.dynamic_elapsed_time_label.config(
-            text=f"Tempo decorrido (dinâmico): {dynamic_elapsed_time:.8f} segundos"
+            text=f"{translate(self.language, 'dynamic_elapsed_time_label')}: {dynamic_elapsed_time:.8f} {translate(self.language, 'seconds')}"
         )
         self.recursive_result_label.config(
-            text=f"Subsequência comum mais longa (recursivo): {recursive_result} ({len(recursive_result)} caracteres)"
+            text=f"{translate(self.language, 'recursive_result_label')}: {recursive_result} ({len(recursive_result)} caracteres)"
         )
         self.recursive_elapsed_time_label.config(
-            text=f"Tempo decorrido (recursivo): {recursive_elapsed_time:.8f} segundos"
+            text=f"{translate(self.language, 'recursive_elapsed_time_label')}: {recursive_elapsed_time:.8f} {translate(self.language, 'seconds')}"
         )
 
 
-def run_lcs_interface():
-    app = LongestCommonSubsequenceApp()
+def run_lcs_interface(language: str):
+    app = LongestCommonSubsequenceApp(language)
     app.mainloop()
 
 
-run_lcs_interface()
+print(
+    """
+    [0] - PT-BR
+    [1] - EN-US
+      """
+)
+opt = str(input("Selecione seu idioma de preferência: "))
+lang = {"0": "pt-br", "1": "en-us"}
+run_lcs_interface(lang[opt])
