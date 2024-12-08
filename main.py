@@ -22,7 +22,7 @@ def problem(language: str) -> int:
                 [0] <- {translate(language, 'exit')}\n
             """)
         try:
-            problem = int(input(f"{translate(language, 'program_functionality')} "))
+            problem = int(input(f"{translate(language, 'enter_choice')} "))
         except ValueError:  
             print(f"{translate(language, 'value_error')}\n")
             clear_screen()
@@ -31,7 +31,7 @@ def problem(language: str) -> int:
 
 opt = -1
 supported_languages = 2
-program_functionality = -1
+enter_choice = -1
 
 while opt < 0 or opt > supported_languages:
     print("""
@@ -48,18 +48,18 @@ while opt < 0 or opt > supported_languages:
 language = {0: "en-us",
             1: "pt-br"}
 
-while program_functionality != 0:
-    program_functionality = problem(language[opt])
+while enter_choice != 0:
+    enter_choice = problem(language[opt])
 
-    if(program_functionality == 0):
+    if(enter_choice == 0):
         break
-    elif(program_functionality == 1):
+    elif(enter_choice == 1):
         run_assignment_problem_interface(language[opt])
-    elif(program_functionality == 2):
+    elif(enter_choice == 2):
         run_huffman_coding_interface(language[opt])
-    elif(program_functionality == 3):
+    elif(enter_choice == 3):
         run_fractional_knapsack_interface(language[opt])
-    elif(program_functionality == 4):
+    elif(enter_choice == 4):
         run_boolean_knapsack_interface(language[opt])
-    elif(program_functionality == 5):
+    elif(enter_choice == 5):
         run_lcs_interface(language[opt])
