@@ -2,6 +2,7 @@ from time import time
 import tkinter as tk
 from tkinter import ttk
 import random
+from translations.fractional_knapsack_problem_translation import translate
 
 
 def greedy_fractional_knapsack(values, weights, W):
@@ -46,46 +47,48 @@ def recursive_fractional_knapsack(values, weights, W, n):
 
 
 class FractionalKnapsackApp(tk.Tk):
-    def __init__(self):
+    language: str
+    def __init__(self, language):
         super().__init__()
-        self.title("Problema da Mochila Fracionária")
+        self.language = language
+        self.title(translate(language, "window_title"))
         self.geometry("600x550")
 
         title = ttk.Label(
             self,
-            text="Problema da Mochila Fracionária\n(comparativo com algoritmo guloso x recursivo)",
+            text=translate(language, "title"),
             font=("Arial", 16),
             justify="center",
         )
         title.pack(pady=20)
 
-        self.max_weight_label = ttk.Label(self, text="Peso máximo da mochila:")
+        self.max_weight_label = ttk.Label(self, text=translate(language, "max_weight_label"))
         self.max_weight_label.pack()
         self.max_weight_entry = ttk.Entry(self)
         self.max_weight_entry.pack()
 
         self.values_label = ttk.Label(
-            self, text="Valores dos itens (separados por espaço):"
+            self, text=translate(language, "item_values_label")
         )
         self.values_label.pack()
         self.values_entry = ttk.Entry(self)
         self.values_entry.pack()
 
         self.weights_label = ttk.Label(
-            self, text="Pesos dos itens (separados por espaço):"
+            self, text=translate(language, "item_weights_label")
         )
         self.weights_label.pack()
         self.weights_entry = ttk.Entry(self)
         self.weights_entry.pack()
 
         self.calculate_button = ttk.Button(
-            self, text="Calcular", command=self.calculate_knapsack
+            self, text=translate(language, "calculate_button"), command=self.calculate_knapsack
         )
         self.calculate_button.pack(pady=10)
 
         self.mock_calculate_button = ttk.Button(
             self,
-            text="Calcular (valores aleatórios)",
+            text=translate(language, "mock_calculate_button"),
             command=self.mock_calculate_knapsack,
         )
         self.mock_calculate_button.pack(pady=10)
@@ -102,7 +105,7 @@ class FractionalKnapsackApp(tk.Tk):
         self.recursive_elapsed_time_label = ttk.Label(self, text="", font=("Arial", 12))
         self.recursive_elapsed_time_label.pack(pady=10)
 
-        self.exit_button = ttk.Button(self, text="Sair", command=self.quit)
+        self.exit_button = ttk.Button(self, text=translate(language, "exit_button"), command=self.quit)
         self.exit_button.pack(pady=10)
 
     def mock_calculate_knapsack(self):
@@ -136,22 +139,30 @@ class FractionalKnapsackApp(tk.Tk):
         recursive_elapsed_time = end - start
 
         self.greedy_result_label.config(
-            text=f"Valor máximo na mochila (guloso): {greedy_result}"
+            text=f"{translate(self.language, 'greedy_result_label')}: {greedy_result}"
         )
         self.greedy_elapsed_time_label.config(
-            text=f"Tempo decorrido (guloso): {greedy_elapsed_time:.8f} segundos"
+            text=f"{translate(self.language, 'greedy_elapsed_time_label')}: {greedy_elapsed_time:.8f} {translate(self.language, 'seconds')}"
         )
         self.recursive_result_label.config(
-            text=f"Valor máximo na mochila (recursivo): {recursive_result}"
+            text=f"{translate(self.language, 'recursive_result_label')}: {recursive_result}"
         )
         self.recursive_elapsed_time_label.config(
-            text=f"Tempo decorrido (recursivo): {recursive_elapsed_time:.8f} segundos"
+            text=f"{translate(self.language, 'recursive_elapsed_time_label')}: {recursive_elapsed_time:.8f} {translate(self.language, 'seconds')}"
         )
 
 
-def run_fractional_knapsack_interface():
-    app = FractionalKnapsackApp()
+def run_fractional_knapsack_interface(language: str):
+    app = FractionalKnapsackApp(language)
     app.mainloop()
 
-
-run_fractional_knapsack_interface()
+print("""
+    [0] - PT-BR
+    [1] - EN-US
+      """)
+opt = str(input("Selecione seu idioma de preferência: "))
+lang = {
+    "0":'pt-br',
+    "1":'en-us'
+}
+run_fractional_knapsack_interface(lang[opt])
