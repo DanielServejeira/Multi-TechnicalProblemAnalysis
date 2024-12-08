@@ -1,18 +1,3 @@
-ptBr = {
-    "window_title": "Problema da Subsequência Comum Mais Longa",
-    "title": "Problema da Subsequência Comum Mais Longa\n(comparativo com programação dinâmica x recursivo)",
-    "string1_label": "String 1:",
-    "string2_label": "String 2:",
-    "calculate_button": "Calcular",
-    "mock_calculate_button": "Calcular (strings aleatórias)",
-    "dynamic_result_label": "Subsequência comum mais longa (dinâmico):",
-    "dynamic_elapsed_time_label": "Tempo decorrido (dinâmico):",
-    "recursive_result_label": "Subsequência comum mais longa (recursivo):",
-    "recursive_elapsed_time_label": "Tempo decorrido (recursivo):",
-    "seconds": "segundos",
-    "exit_button": "Sair"
-}
-
 enUs = {
     "window_title": "Longest Common Subsequence Problem",
     "title": "Longest Common Subsequence Problem\n(comparative with dynamic programming x recursive)",
@@ -28,9 +13,24 @@ enUs = {
     "exit_button": "Exit"
 }
 
+ptBr = {
+    "window_title": "Problema da Subsequência Comum Mais Longa",
+    "title": "Problema da Subsequência Comum Mais Longa\n(comparativo com programação dinâmica x recursivo)",
+    "string1_label": "String 1:",
+    "string2_label": "String 2:",
+    "calculate_button": "Calcular",
+    "mock_calculate_button": "Calcular (strings aleatórias)",
+    "dynamic_result_label": "Subsequência comum mais longa (dinâmico):",
+    "dynamic_elapsed_time_label": "Tempo decorrido (dinâmico):",
+    "recursive_result_label": "Subsequência comum mais longa (recursivo):",
+    "recursive_elapsed_time_label": "Tempo decorrido (recursivo):",
+    "seconds": "segundos",
+    "exit_button": "Sair"
+}
+
 lcs_translation = {
-    "pt-br": ptBr,
-    "en-us": enUs
+    "en-us": enUs,
+    "pt-br": ptBr
 }
 
 def translate(language: str, term: str):
