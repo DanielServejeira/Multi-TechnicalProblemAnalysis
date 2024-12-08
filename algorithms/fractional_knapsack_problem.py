@@ -2,7 +2,7 @@ from time import time
 import tkinter as tk
 from tkinter import ttk
 import random
-from translations.fractional_knapsack_problem_translation import translate
+from algorithms.translations.fractional_knapsack_problem_translation import translate
 
 
 def greedy_fractional_knapsack(values, weights, W):
@@ -111,7 +111,7 @@ class FractionalKnapsackApp(tk.Tk):
         self.recursive_elapsed_time_label.pack(pady=10)
 
         self.exit_button = ttk.Button(
-            self, text=translate(language, "exit_button"), command=self.quit
+            self, text=translate(language, "exit_button"), command=self.destroy
         )
         self.exit_button.pack(pady=10)
 
