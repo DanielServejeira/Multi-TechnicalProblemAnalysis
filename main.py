@@ -1,5 +1,7 @@
 import os
 from translates.main_translation import translate
+from algorithms.assignment_problem import run_assignment_problem_interface
+from algorithms.huffman_coding import run_huffman_coding_interface
 from algorithms.fractional_knapsack_problem import run_fractional_knapsack_interface
 from algorithms.boolean_knapsack_problem import run_boolean_knapsack_interface
 from algorithms.lcs import run_lcs_interface

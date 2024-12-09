@@ -2,10 +2,35 @@ from time import time
 import tkinter as tk
 from tkinter import ttk
 import random
-from translations.assignment_problem_translation import translate
-import numpy as np
+from algorithms.translations.assignment_problem_translation import translate
 
 
+def calculate_cost(matrix, assignment):
+    #Calculate the total cost of a given assignment.
+    return sum(matrix[i][assignment[i]] for i in range(len(assignment)))
+
+def branch_and_bound(matrix, assignment, level, best_solution, best_cost):
+    n = len(matrix)
+    if level == n:
+        current_cost = calculate_cost(matrix, assignment)
+        if current_cost < best_cost:
+            best_cost = current_cost
+            best_solution = assignment[:]
+        return best_solution, best_cost
+
+    for j in range(n):
+        if j not in assignment:
+            assignment[level] = j
+            best_solution, best_cost = branch_and_bound(matrix, assignment, level + 1, best_solution, best_cost)
+            assignment[level] = -1
+    return best_solution, best_cost
+
+def assignment_problem(matrix):
+    n = len(matrix)
+    assignment = [-1] * n
+    best_solution = None
+    best_cost = float('inf')
+    return branch_and_bound(matrix, assignment, 0, best_solution, best_cost)
 
 
 class AssignmentProblemApp(tk.Tk):
@@ -89,8 +114,8 @@ class AssignmentProblemApp(tk.Tk):
         )
         self.exit_button.pack(pady=10)
 
-
     def generate_weights(self):
+        # Generate random weights for the matrix.
         people = self.people_entry.get()
         assignments = self.assignments_entry.get()
         start = self.from_entry.get()
@@ -108,9 +133,7 @@ class AssignmentProblemApp(tk.Tk):
         n = int(self.assignments_entry.get())
         weights_str = self.assignment_weights_entry.get()
 
-        # Convert the weights string back to a 2D list
         weights = list(map(int, weights_str.split()))
-
         if len(weights) != m * n:
             self.error_label.config(text=f"{translate(self.language, 'wrong_weight_amount')}")
             return
@@ -118,15 +141,16 @@ class AssignmentProblemApp(tk.Tk):
         weights_matrix = [weights[i * n:(i + 1) * n] for i in range(m)]
 
         start = time()
-        result = assignment_problem(weights_matrix)
+        best_cost, best_solution = assignment_problem(weights_matrix)
         end = time()
         elapsed_time = end - start
 
         self.result_label.config(
-            text=f"{translate(self.language, 'best_cost')} {result[0]}\n{translate(self.language, 'best_solution')} {result[1]}"
+            text=f"{translate(self.language, 'best_cost')} {best_cost}\n"
+                 f"{translate(self.language, 'best_solution')} {best_solution}"
         )
         self.elapsed_time_label.config(
-            text=f"{translate(self.language, 'elapsed_time_label')} {elapsed_time:.8f} {translate(self.language, 'seconds')}"
+            text=f"{translate(self.language, 'elapsed_time_label')}: {elapsed_time:.8f} {translate(self.language, 'seconds')}"
         )
         self.error_label.config(text="")
 
@@ -134,13 +158,3 @@ class AssignmentProblemApp(tk.Tk):
 def run_assignment_problem_interface(language: str):
     app = AssignmentProblemApp(language)
     app.mainloop()
-
-print(
-    """
-    [0] - PT-BR
-    [1] - EN-US
-      """
-)
-opt = str(input("Selecione seu idioma de preferência: "))
-lang = {"0": "pt-br", "1": "en-us"}
-run_assignment_problem_interface(lang[opt])
