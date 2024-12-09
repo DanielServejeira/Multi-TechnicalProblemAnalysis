@@ -1,6 +1,6 @@
 # Multi-Technical Problems Analysis
 
-This project aims to develop programs to solve some usual problems, using the specified algorithm design technique. The programs strive to feature an intuitive and user-friendly interface.
+This project aims to develop programs to solve some usual problems, using the specified algorithm design technique. The programs strive to feature an intuitive and user-friendly interface open to multiple languages.
 
 ---
 
