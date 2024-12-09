@@ -14,6 +14,8 @@ enUs = {
     "best_cost": "Best cost:",
     "elapsed_time_label": "Execution time:",
     "seconds": "seconds",
+    "empty_field_error": "Empty field. Please, insert a number.",
+    "infinite": "Infinite",
     "exit_button": "Exit"
 }
 
@@ -33,6 +35,8 @@ ptBr = {
     "best_cost": "Melhor custo:",
     "elapsed_time_label": "Tempo de execução:",
     "seconds": "segundos",
+    "empty_field_error": "Campo vazio. Por favor, insira um número.",
+    "infinite": "Infinito",
     "exit_button": "Sair"
 }
 

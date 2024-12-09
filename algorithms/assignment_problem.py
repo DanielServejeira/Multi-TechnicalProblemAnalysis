@@ -141,18 +141,18 @@ class AssignmentProblemApp(tk.Tk):
         weights_matrix = [weights[i * n:(i + 1) * n] for i in range(m)]
 
         start = time()
-        best_cost, best_solution = assignment_problem(weights_matrix)
+        result = assignment_problem(weights_matrix)
         end = time()
         elapsed_time = end - start
 
         self.result_label.config(
-            text=f"{translate(self.language, 'best_cost')} {best_cost}\n"
-                 f"{translate(self.language, 'best_solution')} {best_solution}"
+            text=f"{translate(self.language, 'best_solution')} {result[0]}\n"
+                 f"{translate(self.language, 'best_cost')} {result[1]}"
         )
         self.elapsed_time_label.config(
             text=f"{translate(self.language, 'elapsed_time_label')}: {elapsed_time:.8f} {translate(self.language, 'seconds')}"
         )
-        self.error_label.config(text="")
+        self.error_label.config(text=f"{translate(self.language, 'empty_field_error')}")
 
 
 def run_assignment_problem_interface(language: str):
