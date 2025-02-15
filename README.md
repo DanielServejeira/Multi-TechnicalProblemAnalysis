@@ -36,26 +36,75 @@ This project focuses on implementing solutions for a set of algorithmic problems
 
 ## Features
 
-
+- **Multi-Technical Approach**: Implements multiple algorithm design techniques such as **Greedy Algorithms, Dynamic Programming, and Branch and Bound**.
+- **User-Friendly Interface**: Designed for intuitive interaction, supporting **multiple languages**.
+- **Real-World Applications**: Addresses optimization, data compression, and resource allocation problems.
+- **Modular Codebase**: Well-structured and documented for easy modifications and enhancements.
 
 ---
 
 ## Files and Structure
 
+```
+Multi-TechnicalProblemAnalysis/
+algorithms/
+│── translations/
+│   ├── __init__.py
+│   ├── assignment_problem_translation.py
+│   ├── boolean_knapsack_problem_translation.py
+│   ├── fractional_knapsack_problem_translation.py
+│   ├── huffman_coding_translation.py
+│   ├── lcs_translation.py
+│── translates/
+│   ├── __init__.py
+│   ├── main_translation.py
+│── .gitignore
+│── LICENSE
+│── README.md
+│── main.py
+│── assignment_problem.py
+│── boolean_knapsack_problem.py
+│── fractional_knapsack_problem.py
+│── huffman_coding.py
+│── lcs.py
+```
 
+---
 
 ### Utilities
 
-
+- **File Handling**: Functions to read and write structured input/output files.
+- **Performance Analysis**: Benchmarking tools to measure algorithm efficiency.
+- **Visualization Tools**: Graphical/text-based output for better understanding.
 
 ---
 
 ## Usage
 
+### Prerequisites
 
+Ensure you have the following installed:
+
+- **Python 3.x**
+- Required dependencies (install via `pip` or relevant package manager)
+
+### Running the Programs
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/DanielServejeira/Multi-TechnicalProblemAnalysis.git
+   cd Multi-TechnicalProblemAnalysis
+   ```
+
+2. **Navigate to the main archive and run the corresponding script**  
+   ```bash
+   python main.py
+   ```
+
+3. **Check the output in the console or generated files**
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the **MIT License**. See the [`LICENSE`](LICENSE) file for details.
