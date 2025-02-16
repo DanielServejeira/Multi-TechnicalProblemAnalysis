@@ -91,7 +91,7 @@ Ensure you have the following installed:
    pip install pandas
    ```
 - **MatPlotLib**
-  ```bash
+   ```bash
    pip install matplotlib
    ```
 
