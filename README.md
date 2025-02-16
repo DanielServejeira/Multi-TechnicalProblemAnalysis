@@ -86,7 +86,14 @@ algorithms/
 Ensure you have the following installed:
 
 - **Python 3.x**
-- Required dependencies (install via `pip` or relevant package manager)
+- **Pandas Library**
+   ```bash
+   pip install pandas
+   ```
+- **MatPlotLib**
+  ```bash
+   pip install matplotlib
+   ```
 
 ### Running the Programs
 
